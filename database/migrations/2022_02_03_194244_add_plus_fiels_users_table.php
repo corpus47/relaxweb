@@ -15,8 +15,8 @@ class AddPlusFielsUsersTable extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             //
-            $table->string('first_name',255);
-            $table->string('last_name',255);
+            //$table->string('first_name',255);
+            //$table->string('last_name',255);
             $table->string('phone',12);
             $table->string('mobile',12);
             $table->integer('privileg')->nullable()->default(0);
@@ -32,8 +32,8 @@ class AddPlusFielsUsersTable extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             //
-            $table->dropColumn('first_name');
-            $table->dropColumn('last_name');
+            //$table->dropColumn('first_name');
+            //$table->dropColumn('last_name');
             $table->dropColumn('phone');
             $table->dropColumn('mobile');
             $table->dropColumn('privileg');
