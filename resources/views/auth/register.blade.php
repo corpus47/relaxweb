@@ -93,6 +93,70 @@
                 </div>
 
                 <div class="input-group mb-3">
+                    <input type="text"
+                           name="zipcode"
+                           value="{{ old('zipcode') }}"
+                           class="form-control @error('zipcode') is-invalid @enderror"
+                           placeholder="Irányítószám">
+                           <div class="input-group-append">
+                        <div class="input-group-text"><span class="fas fa-envelope"></span></div>
+                    </div>
+                    @error('zipcode')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                    @enderror
+                </div>
+
+                <div class="input-group mb-3">
+                    <input type="text"
+                           name="city"
+                           value="{{ old('city') }}"
+                           class="form-control @error('city') is-invalid @enderror"
+                           placeholder="Helység">
+                           <div class="input-group-append">
+                        <div class="input-group-text"><span class="fas fa-envelope"></span></div>
+                    </div>
+                    @error('city')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                    @enderror
+                </div>
+
+                <div class="input-group mb-3">
+                    <input type="text"
+                           name="address"
+                           value="{{ old('address') }}"
+                           class="form-control @error('address') is-invalid @enderror"
+                           placeholder="Utca, házszám">
+                           <div class="input-group-append">
+                        <div class="input-group-text"><span class="fas fa-envelope"></span></div>
+                    </div>
+                    @error('address')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                    @enderror
+                </div>
+
+                <div class="input-group mb-3">
+                    <input type="text"
+                           name="account_number"
+                           value="{{ old('account_number') }}"
+                           class="form-control @error('account_number') is-invalid @enderror"
+                           placeholder="Bankszámlaszám">
+                           <div class="input-group-append">
+                        <div class="input-group-text"><span class="fas fa-envelope"></span></div>
+                    </div>
+                    @error('account_number')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                    @enderror
+                </div>
+
+                <div class="input-group mb-3">
                     <input type="password"
                            name="password"
                            class="form-control @error('password') is-invalid @enderror"

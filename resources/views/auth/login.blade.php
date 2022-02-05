@@ -84,6 +84,11 @@
         </div>
         <!-- /.login-card-body -->
     </div>
+    @if (session('error'))
+   <div class="alert alert-danger">
+        {{ session('error') }}
+   </div>
+    @endif
 
 </div>
 <!-- /.login-box -->
