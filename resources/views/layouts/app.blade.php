@@ -66,6 +66,24 @@
 
 <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    @isset($title)
+                        <h1>{{ $title }}</h1>
+                    @endisset
+                </div>
+                <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="#">Kezdőlap</a></li>
+                    <li class="breadcrumb-item active">@isset($title){{$title}}@endisset</li>
+                </ol>
+                </div>
+            </div>
+            </div><!-- /.container-fluid -->
+        </section>
         <section class="content">
             @yield('content')
         </section>
@@ -74,10 +92,9 @@
     <!-- Main Footer -->
     <footer class="main-footer">
         <div class="float-right d-none d-sm-block">
-            <b>Version</b> 3.0.5
+            <!--<b>Version</b> 3.0.5-->
         </div>
-        <strong>Copyright &copy; 2014-2020 <a href="https://adminlte.io">AdminLTE.io</a>.</strong> All rights
-        reserved.
+        <strong>Copyright &copy; 2022 <a href="https://relaxkonyveloprogram.hu">relaxkonyveloprogram.hu</a>.</strong> Minden jog fenntartva!
     </footer>
 </div>
 
