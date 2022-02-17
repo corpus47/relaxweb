@@ -31,7 +31,9 @@ class UserController extends Controller
     public function create()
     {
         //
-        return view('users.add');
+        return view('users.add')->with([
+            'title' => 'Új felhasználó'
+        ]);
     }
 
     /**
