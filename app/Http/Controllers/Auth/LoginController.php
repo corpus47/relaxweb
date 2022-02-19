@@ -61,6 +61,8 @@ class LoginController extends Controller
                 return redirect()->route('admin.dashboard');
             } elseif(auth()->user()->privileg == 2) {
                 return redirect()->route('user.dashboard');
+            } elseif(auth()->user->is_good()) {
+                return redirect()->route('good.dashboard');
             }
         } else {
             return redirect()->route('login')->with('error','Nem megfelelő felhasználónév vagy jelszó!');

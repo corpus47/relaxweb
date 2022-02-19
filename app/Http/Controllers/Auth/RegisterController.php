@@ -49,6 +49,7 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
+        //dd($data);
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
@@ -59,7 +60,7 @@ class RegisterController extends Controller
             'address' => [ 'required', 'string'],
             'account_number' => ['numeric', 'digits:24'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
-            
+            'terms' => ['required','in:agree']
         ]);
     }
 
@@ -80,7 +81,8 @@ class RegisterController extends Controller
             'zipcode' => $data['zipcode'],
             'city' => $data['city'],
             'address' => $data['address'],
-            'account_number' => $data['account_number']
+            'account_number' => $data['account_number'],
+            'owner'=> config('global.good_user')
         ]);
     }
 }

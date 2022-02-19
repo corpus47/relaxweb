@@ -30,6 +30,12 @@ Auth::routes();
 
 Route::resource('users', App\Http\Controllers\UserController::class);
 
+Route::group(['prefix' => 'good', 'middleware' => 'auth'],function(){
+    Route::get('dashboard',[GoodController::class,'index'])->name('good.dashboard');
+    Route::get('profile',[GoodController::class,'profile'])->name('good.profile');
+    Route::get('settings',[GoodController::class,'settings'])->name('good.settings');
+});
+
 Route::group(['prefix' => 'superadmin', 'middleware' => 'auth'],function(){
     Route::get('dashboard',[SuperAdminController::class,'index'])->name('superadmin.dashboard');
     Route::get('profile',[SuperAdminController::class,'profile'])->name('superadmin.profile');

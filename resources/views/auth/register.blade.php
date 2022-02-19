@@ -181,18 +181,22 @@
                     </div>
                 </div>
 
-                <div class="row">
-                    <div class="col-8">
-                        <div class="icheck-primary">
-                            <input type="checkbox" id="agreeTerms" name="terms" value="agree">
-                            <label for="agreeTerms">
-                                Elfogadom a <a href="#">feltételeket</a>
-                            </label>
-                        </div>
+                <div class="input-group mb-3">
+                    <div class="icheck-primary">
+                        <input type="checkbox" id="agreeTerms" name="terms" value="agree" {{ !old('terms') ?: 'checked' }} class="@error('terms') is-invalid @enderror">
+                        <label for="agreeTerms">
+                            Elfogadom a <a href="#">feltételeket</a>
+                        </label>
                     </div>
-                    <!-- /.col -->
-                    
+                    @error('terms')
+
+                        <p style="color:red;">{{ $message }}</p>
+
+                    @enderror
                 </div>
+
+
+
                 <div class="row">
                     <div class="input-group mb-3">
                         <button type="submit" class="btn btn-primary btn-block">Regisztráció</button>
