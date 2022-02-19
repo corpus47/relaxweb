@@ -26,29 +26,33 @@ Route::get('/', function () {
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Auth::routes();
+Route::middleware(['middleware' => 'PreventBackHistory'])->group(function(){
+    Auth::routes();
+});
+
+
 
 Route::resource('users', App\Http\Controllers\UserController::class);
 
-Route::group(['prefix' => 'good', 'middleware' => 'auth'],function(){
+Route::group(['prefix' => 'good', 'middleware' =>[ 'isGood','auth','PreventBackHistory']],function(){
     Route::get('dashboard',[GoodController::class,'index'])->name('good.dashboard');
     Route::get('profile',[GoodController::class,'profile'])->name('good.profile');
     Route::get('settings',[GoodController::class,'settings'])->name('good.settings');
 });
 
-Route::group(['prefix' => 'superadmin', 'middleware' => 'auth'],function(){
+Route::group(['prefix' => 'superadmin', 'middleware' =>['isSuperAdmin', 'auth','PreventBackHistory']],function(){
     Route::get('dashboard',[SuperAdminController::class,'index'])->name('superadmin.dashboard');
     Route::get('profile',[SuperAdminController::class,'profile'])->name('superadmin.profile');
     Route::get('settings',[SuperAdminController::class,'settings'])->name('superadmin.settings');
 });
 
-Route::group(['prefix' => 'admin', 'middleware' => 'auth'],function(){
+Route::group(['prefix' => 'admin', 'middleware' => ['isadmin','auth','PreventBackHistory']],function(){
     Route::get('dashboard',[AdminController::class,'index'])->name('admin.dashboard');
     Route::get('profile',[AdminController::class,'profile'])->name('admin.profile');
     Route::get('settings',[AdminController::class,'settings'])->name('admin.settings');
 });
 
-Route::group(['prefix' => 'users', 'middleware' => 'auth'],function(){
+Route::group(['prefix' => 'users', 'middleware' => ['isUser','auth','PreventBackHistory']],function(){
     Route::get('dashboard',[UsersController::class,'index'])->name('users.dashboard');
     Route::get('profile',[UsersController::class,'profile'])->name('users.profile');
     Route::get('settings',[UsersController::class,'settings'])->name('users.settings');

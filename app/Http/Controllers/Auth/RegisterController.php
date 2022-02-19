@@ -82,7 +82,8 @@ class RegisterController extends Controller
             'city' => $data['city'],
             'address' => $data['address'],
             'account_number' => $data['account_number'],
-            'owner'=> config('global.good_user')
+            'owner'=> config('global.good_user'),
+            'privileg' => 2
         ]);
     }
 }
