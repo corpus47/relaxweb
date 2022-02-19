@@ -3,8 +3,11 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+
+use Illuminate\Http\Request;
 
 class LoginController extends Controller
 {
@@ -28,6 +31,16 @@ class LoginController extends Controller
      */
     protected $redirectTo = RouteServiceProvider::HOME;
 
+    protected function redirecto(){
+        if(Auth::user()->privileg == 0 ){
+            return route('superadmin.dashboard');
+        } elseif(Auth::user()->privileg == 1) {
+            return route('admin.dashboard');
+        } elseif(Auth::user()->privileg == 2) {
+            return route('user.dashboard');
+        }
+    }
+
     /**
      * Create a new controller instance.
      *
@@ -36,5 +49,22 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
+    }
+
+    public function login(Request $request){
+        $input = $request->all();
+
+        if(auth()->attempt(array('email'=>$input['email'],'password'=>$input['password']))){
+            if(auth()->user()->privileg == 0) {
+                return redirect()->route('superadmin.dashboard');
+            } elseif(auth()->user()->privileg == 1) {
+                return redirect()->route('admin.dashboard');
+            } elseif(auth()->user()->privileg == 2) {
+                return redirect()->route('user.dashboard');
+            }
+        } else {
+            return redirect()->route('login')->with('error','Nem megfelelő felhasználónév vagy jelszó!');
+        }
+
     }
 }
