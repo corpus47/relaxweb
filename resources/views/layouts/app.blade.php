@@ -92,6 +92,11 @@
             </div>
             </div><!-- /.container-fluid -->
         </section>
+        @if (Session::has('success'))
+            <div class="alert alert-danger alert-dismissible">
+                {{Session::get('success') }}
+            </div>
+        @endif
         <section class="content">
             @yield('content')
         </section>
