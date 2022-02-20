@@ -20,12 +20,16 @@ use App\Http\Controllers\SuperAdminController;
 |
 */
 
-Route::get('/', function () {
-   //return view('welcome');
-   return view('auth.login');
-})->name('/');
+//Route::get('/', function () {
+//   return view('welcome');
+   //return view('auth.login');
+//});
 
-//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('/');
+
+Route::get('notprivileg', function(){
+    return view('notprivileg');
+});
 
 Route::middleware(['middleware' => 'PreventBackHistory'])->group(function(){
     Auth::routes();

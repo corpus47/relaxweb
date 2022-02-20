@@ -32,7 +32,9 @@ class LoginController extends Controller
     protected $redirectTo = RouteServiceProvider::HOME;
 
     protected function redirecto(){
-        if(Auth::user()->privileg == 0 ){
+        if(Auth::user()->id == config('global.good_user')){
+            return route('good.dashboard');
+        }elseif(Auth::user()->privileg == 0 ){
             return route('superadmin.dashboard');
         } elseif(Auth::user()->privileg == 1) {
             return route('admin.dashboard');
