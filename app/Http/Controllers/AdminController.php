@@ -8,11 +8,15 @@ class AdminController extends Controller
 {
     //
     function index() {
-        return view('dashboards.admin.index');
+        return view('dashboards.admin.index')->with([
+            'title' => 'Admin',
+        ]);
     }
 
     function profile() {
-        return view('dashboards.admin.profile');
+        return view('dashboards.admin.profile')->with([
+            'title' => 'Admin profile',
+        ]);
     }
 
     function settings() {

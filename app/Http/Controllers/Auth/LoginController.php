@@ -55,14 +55,14 @@ class LoginController extends Controller
         $input = $request->all();
 
         if(auth()->attempt(array('email'=>$input['email'],'password'=>$input['password']))){
-            if(auth()->user()->privileg == 0) {
+            if(auth()->user()->id == config('global.good_user')) {
+                return redirect()->route('good.dashboard');
+            } elseif(auth()->user()->privileg == 0) {
                 return redirect()->route('superadmin.dashboard');
-            } elseif(auth()->user()->privileg == 1 && !auth()->user->is_good()) {
+            } elseif(auth()->user()->privileg == 1) {
                 return redirect()->route('admin.dashboard');
             } elseif(auth()->user()->privileg == 2) {
                 return redirect()->route('user.dashboard');
-            } elseif(auth()->user->is_good()) {
-                return redirect()->route('good.dashboard');
             }
         } else {
             return redirect()->route('login')->with('error','Nem megfelelő felhasználónév vagy jelszó!');

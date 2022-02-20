@@ -17,7 +17,7 @@ class isUserMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
-        if(Auth::check() && Auth::user()->privileg == 0 ) {
+        if(Auth::check() && Auth::user()->privileg == 2 ) {
             return $next($request);
          } else {
              return redirect()->route('login');

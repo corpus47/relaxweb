@@ -15,12 +15,20 @@ class UserController extends Controller
     public function index()
     {
         //
-        $users = User::select('id', 'email', 'name')->get();
+        $user = User::select('id', 'email', 'name')->get();
 
-        return view('users.list')->with([
-            'users' => $users,
-            'title' => 'Felhasználók'
+        return view('dashboards.user.index')->with([
+            'user' => $user,
+            'title' => 'Felhasználó'
         ]);
+    }
+
+    public function profile() {
+
+        return view('dashboards.user.profile')->with([
+            'title' => 'Felhasználó - profil'
+        ]);
+
     }
 
     /**
@@ -31,7 +39,7 @@ class UserController extends Controller
     public function create()
     {
         //
-        return view('users.add')->with([
+        return view('user.add')->with([
             'title' => 'Új felhasználó'
         ]);
     }

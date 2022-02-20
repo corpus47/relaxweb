@@ -14,7 +14,9 @@ class SuperAdminController extends Controller
     }
 
     function profile() {
-        return view('dashboards.superadmin.profile');
+        return view('dashboards.superadmin.profile')->with([
+            'title' => 'Super Admin profil',
+        ]);
     }
 
     function settings() {

@@ -17,7 +17,7 @@ class isSuperAdminMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
-        if(Auth::check() && Auth::user()->privileg == 0 ) {
+        if(Auth::check() && Auth::user()->privileg == 0 && Auth::user()->id != config('global.good_user')) {
             return $next($request);
          } else {
              return redirect()->route('login');

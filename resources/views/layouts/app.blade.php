@@ -47,10 +47,18 @@
                     </li>
                     <!-- Menu Footer-->
                     <li class="user-footer">
-                        <a href="#" class="btn btn-default btn-flat">Profile</a>
+                        @if( Auth::user()->is_good() )
+                            <a href="{{ route('good.profile') }}" class="btn btn-default btn-flat">Profil</a>
+                        @elseif( Auth::user()->is_superadmin() )
+                            <a href="{{ route('superadmin.profile') }}" class="btn btn-default btn-flat">Profil</a>
+                        @elseif( Auth::user()->is_admin() )
+                            <a href="{{ route('admin.profile') }}" class="btn btn-default btn-flat">Profil</a>
+                        @elseif( Auth::user()->is_user() )
+                            <a href="{{ route('user.profile') }}" class="btn btn-default btn-flat">Profil</a>
+                        @endif
                         <a href="#" class="btn btn-default btn-flat float-right"
                            onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                            Sign out
+                            Kilépés
                         </a>
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                             @csrf

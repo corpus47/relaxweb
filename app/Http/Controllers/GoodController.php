@@ -14,7 +14,9 @@ class GoodController extends Controller
     }
 
     function profile() {
-        return view('dashboards.good.profile');
+        return view('dashboards.good.profile')->with([
+            'title' => 'Good User profile',
+        ]);
     }
 
     function settings() {
