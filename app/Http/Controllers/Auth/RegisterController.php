@@ -100,6 +100,7 @@ class RegisterController extends Controller
                 ->subject('Welcome to Relaxweb')
                 ->from('info@relaxweb.wplabor.hu', 'RelaxWeb');
         });
+        //app(\App\Http\Controllers\GoodController::class)->send_email('after_user_registration_email',$email_data);
 
         return $user;
     }

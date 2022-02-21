@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class GoodController extends Controller
 {
@@ -22,4 +23,5 @@ class GoodController extends Controller
     function settings() {
         return view('dashboards.good.settings');
     }
+
 }
