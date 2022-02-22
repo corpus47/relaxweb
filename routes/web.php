@@ -25,11 +25,13 @@ use App\Http\Controllers\SuperAdminController;
    //return view('auth.login');
 //});
 
+Route::get('/afterregister', function(){
+    return view('afterregister');
+});
+
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('/');
 
-Route::get('notprivileg', function(){
-    return view('notprivileg');
-});
+//Auth::routes(['register' => false]);
 
 Route::middleware(['middleware' => 'PreventBackHistory'])->group(function(){
     Auth::routes();

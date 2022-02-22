@@ -7,9 +7,12 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use App\Providers\RouteServiceProvider;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Controllers\SendEmailController;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Http\Request;
+use Illuminate\Auth\Events\Registered;
 
 class RegisterController extends Controller
 {
@@ -32,6 +35,16 @@ class RegisterController extends Controller
      * @var string
      */
     protected $redirectTo = RouteServiceProvider::HOME;
+
+    //protected $redirectTo = 'afterregister';
+
+    //protected function redirectTo() {
+
+        //Session::flash('error','Kérjük, ellenőrizze email fiókját!');
+        //return RouteServiceProvider::HOME;
+
+    //    return 'afterregister';
+    //}
 
     /**
      * Create a new controller instance.
@@ -106,6 +119,19 @@ class RegisterController extends Controller
 
         SendEmailController::after_registration_to_user($user->id);
 
+        SendEmailController::after_registration_to_owner($user->owner);
+
         return $user;
     }
+
+    public function register(Request $request)
+    {
+        $this->validator($request->all())->validate();
+        event(new Registered($user = $this->create($request->all())));
+        return $this->registered($request, $user)
+           // ?: redirect($this->redirectPath());
+          //?: redirect()->route('/afterregister')->with('success', 'You are successfully Registered!');
+          ?: redirect('/afterregister')->with('success','Sikeres regisztráció. További információért kérjük, ellenőrizze email fiókját!');
+    }
+
 }
