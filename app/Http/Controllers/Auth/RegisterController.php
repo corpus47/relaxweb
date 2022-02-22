@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Support\Facades\Validator;
+use App\Http\Controllers\SendEmailController;
 use Illuminate\Foundation\Auth\RegistersUsers;
 
 class RegisterController extends Controller
@@ -88,7 +89,7 @@ class RegisterController extends Controller
         ]);
 
         // email data
-        $email_data = array(
+        /*$email_data = array(
             'name' => $data['name'],
             'email' => $data['email'],
         );
@@ -99,8 +100,10 @@ class RegisterController extends Controller
             $message->to($email_data['email'], $email_data['name'])
                 ->subject('Welcome to Relaxweb')
                 ->from('info@relaxweb.wplabor.hu', 'RelaxWeb');
-        });
+        });*/
         //app(\App\Http\Controllers\GoodController::class)->send_email('after_user_registration_email',$email_data);
+
+        SendEmailController::after_registration_to_user($user->id);
 
         return $user;
     }
