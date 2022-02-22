@@ -28,7 +28,8 @@ class User extends Authenticatable
         'address',
         'account_number',
         'privileg',
-        'active'
+        'active',
+        'owner'
     ];
 
     /**
