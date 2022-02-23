@@ -4,8 +4,8 @@
         <i class="nav-icon fas fa-home"></i>
         <p>Kezdőlap</p>
     </a>
-    @if(!Auth::user()->is_good())
-    <a href="#" class="nav-link active">
+    @if(Auth::user()->is_good() )
+    <a href="{{ route('good.listusers') }}" class="nav-link active">
         <i class="nav-icon fas fa-users"></i>
         <p>Felhasználók</p>
     </a>

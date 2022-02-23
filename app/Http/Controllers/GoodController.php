@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 
@@ -22,6 +23,16 @@ class GoodController extends Controller
 
     function settings() {
         return view('dashboards.good.settings');
+    }
+
+    function listusers() {
+
+        $users = User::all();
+
+        return view('dashboards.good.listusers')->with([
+            'users' => $users
+        ]);
+
     }
 
 }

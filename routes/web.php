@@ -45,6 +45,7 @@ Route::group(['prefix' => 'good', 'middleware' =>[ 'isGood','auth','PreventBackH
     Route::get('dashboard',[GoodController::class,'index'])->name('good.dashboard');
     Route::get('profile',[GoodController::class,'profile'])->name('good.profile');
     Route::get('settings',[GoodController::class,'settings'])->name('good.settings');
+    Route::get('listusers',[GoodController::class,'listusers'])->name('good.listusers');
 });
 
 Route::group(['prefix' => 'superadmin', 'middleware' =>['isSuperAdmin', 'auth','PreventBackHistory']],function(){
