@@ -17,6 +17,7 @@ class isGoodMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
+
         if(Auth::check() && Auth::user()->id == config('global.good_user')) {
            return $next($request);
         } else {
