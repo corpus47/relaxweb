@@ -119,7 +119,7 @@ class RegisterController extends Controller
 
         SendEmailController::after_registration_to_user($user->id);
 
-        SendEmailController::after_registration_to_owner($user->owner);
+        SendEmailController::after_registration_to_owner($user);
 
         return $user;
     }
