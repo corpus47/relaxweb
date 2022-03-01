@@ -8,7 +8,7 @@
                 <div class="card-header py-3">
                     <h3 class="card-title">Regisztrált felhasználók</h3>
                     <div class="card-tools">
-                        <a href="" class="btn btn-sm btn-primary">
+                        <a href="" class="btn btn-block btn-primary">
                             <i class="fas fa-plus"></i>&nbsp;Új felhasználó
                         </a>
                     </div>
@@ -20,6 +20,9 @@
                                 <th>ID</th>
                                 <th>Név</th>
                                 <th>Email</th>
+                                <th>Telefon</th>
+                                <th>Cím</th>
+                                <th>Műveletek</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -28,6 +31,18 @@
                             <td>{{$user->id}}</td>
                             <td>{{$user->name}}</td>
                             <td>{{$user->email}}</td>
+                            <td>{{$user->phone}}<br />{{$user->mobile}}</td>
+                            <td>{{$user->zipcode}}&nbsp;{{$user->city}}<br />{{$user->address}}</td>
+                            <td>
+                                <button type="button" class="btn btn-block btn-outline-primary btn-xs">Szerkeszt</button>
+                                <button type="button" class="btn btn-block btn-outline-danger btn-xs">Töröl</button>
+                                @if($user->active == 1)
+                                    <button type="button" class="btn btn-block btn-outline-success btn-xs">Aktív</button>
+                                @else
+                                    <button type="button" class="btn btn-block btn-outline-dark btn-xs">Inaktív</button>
+                                @endif
+
+                            </td>
                         </tr>
                         @endforeach
                         </tbody>
