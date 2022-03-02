@@ -22,6 +22,7 @@
                                 <th>Email</th>
                                 <th>Telefon</th>
                                 <th>Cím</th>
+                                <th>Jogosultságok</th>
                                 <th>Műveletek</th>
                             </tr>
                         </thead>
@@ -43,6 +44,11 @@
                                 @endif
 
                             </td>
+                            <td>
+                                @if($user->is_user())
+                                    Jogosultságok
+                                @endif
+                            </td>
                         </tr>
                         @endforeach
                         </tbody>
@@ -53,3 +59,12 @@
     </div>
 </div>
 @endsection
+
+@push('page_scripts')
+<script>
+jQuery(document).ready(function($){
+    $('#users_table').DataTable({});
+});
+
+</script>
+@endpush
