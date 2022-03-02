@@ -62,8 +62,12 @@
 
 @push('page_scripts')
 <script>
-window.addEventListener('load', function() {
-    $('#users_table').DataTable({});
+$(document).ready(function () {
+   $('#users-table').DataTable({
+    language: {
+            url: 'https://cdn.datatables.net/plug-ins/1.11.5/i18n/hu.json'
+        }
+   });
 });
 </script>
 @endpush
