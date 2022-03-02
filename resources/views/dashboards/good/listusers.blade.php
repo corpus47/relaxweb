@@ -62,9 +62,8 @@
 
 @push('page_scripts')
 <script>
-jQuery(document).ready(function($){
+window.addEventListener('load', function() {
     $('#users_table').DataTable({});
 });
-
 </script>
 @endpush
