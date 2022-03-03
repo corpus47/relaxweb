@@ -35,4 +35,10 @@ class GoodController extends Controller
 
     }
 
+    function adduser() {
+        return view('dashboards.good.adduser')->with([
+            'title' => 'Új felhasználó'
+        ]);
+    }
+
 }

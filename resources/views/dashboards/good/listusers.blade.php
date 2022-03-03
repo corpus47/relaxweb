@@ -8,7 +8,7 @@
                 <div class="card-header py-3">
                     <h3 class="card-title">Regisztrált felhasználók</h3>
                     <div class="card-tools">
-                        <a href="" class="btn btn-block btn-primary">
+                        <a href="{{ route('good.adduser') }}" class="btn btn-block btn-primary">
                             <i class="fas fa-plus"></i>&nbsp;Új felhasználó
                         </a>
                     </div>
