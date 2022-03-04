@@ -92,11 +92,6 @@
             </div>
             </div><!-- /.container-fluid -->
         </section>
-        @if (Session::has('success'))
-            <div class="alert alert-danger alert-dismissible">
-                {{Session::get('success') }}
-            </div>
-        @endif
         <section class="content">
             @yield('content')
         </section>
@@ -111,10 +106,40 @@
     </footer>
 </div>
 
+<!-- Success Modal alert -->
+<div class="modal fade" id="SuccessModal" tabindex="-1" role="dialog" aria-labelledby="AlertModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header bg-success text-white">
+          <h5 class="modal-title" id="exampleModalLabel">Figyelmeztetés</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body text-center">
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Bezárás</button>
+        </div>
+      </div>
+    </div>
+</div>
+
 <script src="{{ mix('js/app.js') }}"></script>
 
 @yield('third_party_scripts')
 
 @stack('page_scripts')
+
+@if (Session::has('success'))
+<script>
+$(document).ready(function(){
+    $('#SuccessModal').find('.modal-body').html('{!! Session::get('success') !!}');
+    $('#SuccessModal').modal('show');
+})
+</script>
+@endif
+
 </body>
 </html>
