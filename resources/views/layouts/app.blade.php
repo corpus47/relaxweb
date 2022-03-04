@@ -10,7 +10,6 @@
           crossorigin="anonymous"/>
 
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
-    <link href="{{ asset('plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
 
     @yield('third_party_stylesheets')
 
@@ -113,7 +112,6 @@
 </div>
 
 <script src="{{ mix('js/app.js') }}"></script>
-<script src="{{ asset('plugins/datatables-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
 
 @yield('third_party_scripts')
 
